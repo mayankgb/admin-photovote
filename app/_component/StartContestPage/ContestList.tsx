@@ -162,7 +162,7 @@ export function ContestList() {
     return (
         <div className="grid gap-6 md:grid-cols-2 mt-4 lg:grid-cols-3">
             {response.map((contest) => (
-                <Card key={contest.id} className="overflow-hidden hover:shadow-lg transition-all duration-300 border-gray-200">
+                <Card key={contest.id} className="overflow-hidden gap-0 hover:shadow-lg transition-all duration-300 border-gray-200">
                     <CardHeader className="pb-2">
                         <div className="flex justify-between items-start">
                             <Badge className={`${getCategoryColor(contest.category)} font-medium`}>
@@ -172,6 +172,7 @@ export function ContestList() {
                         <h3 className="text-xl font-bold mt-2 line-clamp-1">{contest.name}</h3>
                     </CardHeader>
                     <CardContent className="pb-3">
+                        <div>
                         <div className="flex items-center text-gray-600 mb-2">
                             <Calendar className="h-4 w-4 mr-2" />
                             <p className="text-sm">
@@ -181,6 +182,10 @@ export function ContestList() {
                                     year: "numeric"
                                 })}
                             </p>
+                        </div>
+                        <div className="text-sm ">
+                            Total Participant {contest.participant}
+                        </div>
                         </div>
                     </CardContent>
                     <CardFooter className="grid grid-cols-2 gap-3 pt-0">

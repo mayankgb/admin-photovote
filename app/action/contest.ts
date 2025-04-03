@@ -27,7 +27,7 @@ export async function getCreatedContest() {
                     name: true,
                     category: true,
                     endDate: true,
-                    _count: {select: {participant: {where:{status: "APPROVE"}}}}
+                    _count: {select: {participant: true}}
                 }
             })
 
