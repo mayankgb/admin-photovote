@@ -44,7 +44,7 @@ export function EndDateComponent() {
               <Calendar
                 mode="single"
                 selected={endDate}
-                onSelect={(date) => date && setContestData("endDate", date)}
+                onSelect={(date) => date && setContestData("endDate", new Date(date.setHours(0,0,0,0)))}
                 disabled={(date) => date < addDays(startDate, 2)}
                 initialFocus
               />

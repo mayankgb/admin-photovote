@@ -34,7 +34,7 @@ export function StartDateComponent() {
               <Calendar
                 mode="single"
                 selected={startDate}
-                onSelect={(date) => date && setContestData("startDate", date)}
+                onSelect={(date) => date && setContestData("startDate", new Date(date.setHours(0,0,0,0)))}
                 disabled={(date) => date < addDays(new Date(), 2)}
                 initialFocus
               />
