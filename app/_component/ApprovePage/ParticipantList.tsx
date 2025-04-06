@@ -173,7 +173,7 @@ export default function ParticipantList() {
                                 <div className="w-full h-32 bg-gray-100 relative">
                                     {user.user.image ? (
                                         <Image 
-                                            src={"https://d12hk4zd0jmtng.cloudfront.net/path/Mayank%202-12d88b88-85b2-40e5-8fb1-b9d314c58a43"} 
+                                            src={user.user.image} 
                                             alt={user.user.name || "User"} 
                                             fill
                                             className="object-cover"
