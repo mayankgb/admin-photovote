@@ -138,7 +138,7 @@ export default function ParticipantList() {
     }
 
     return (
-        <div className="space-y-4 grow h-full flex flex-col ">
+        <div className="space-y-4 grow h-full flex flex-col">
             {/* Header with Approve All button */}
             <div className="flex justify-between items-center">
                 <h2 className="text-xl font-bold text-black">Contest Participants</h2>
@@ -169,28 +169,29 @@ export default function ParticipantList() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
                         {participant.map((user) => (
                             <div key={user.id} className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow transition-shadow">
-                                {/* User image at the top */}
-                                <div className="w-full h-32 bg-gray-100 relative">
-                                    {user.user.image ? (
-                                        <Image 
-                                            src={user.user.image} 
-                                            alt={user.user.name || "User"} 
-                                            fill
-                                            className="object-cover"
-                                        />
-                                    ) : (
-                                        <div className="w-full h-full bg-yellow-100 flex items-center justify-center">
-                                            <span className="text-yellow-800 font-bold text-4xl">
-                                                {user.user.name?.charAt(0) || "U"}
-                                            </span>
-                                        </div>
-                                    )}
-                                </div>
-                                
-                                {/* User info and buttons */}
-                                <div className="p-4">
-                                    <div className="mb-2">
-                                        <div className="font-medium text-black text-lg">{user.user.name || "Anonymous User"}</div>
+                                <div className="flex p-4 items-center">
+                                    {/* User image as avatar on left */}
+                                    <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 mr-4">
+                                        {user.user.image ? (
+                                            <Image 
+                                                src={user.user.image} 
+                                                alt={user.user.name || "User"} 
+                                                width={64}
+                                                height={64}
+                                                className="object-cover w-full h-full"
+                                            />
+                                        ) : (
+                                            <div className="w-full h-full bg-yellow-100 flex items-center justify-center">
+                                                <span className="text-yellow-800 font-bold text-xl">
+                                                    {user.user.name?.charAt(0) || "U"}
+                                                </span>
+                                            </div>
+                                        )}
+                                    </div>
+                                    
+                                    {/* User info */}
+                                    <div>
+                                        <div className="font-medium text-black text-lg mb-1">{user.user.name || "Anonymous User"}</div>
                                         <div className="text-sm text-gray-500">
                                             {user.user.branch?.name ? `${user.user.branch.name}` : "No branch"} 
                                         </div>
@@ -201,21 +202,22 @@ export default function ParticipantList() {
                                             <span>{user.upvote} {user.upvote === 1 ? "upvote" : "upvotes"}</span>
                                         </div>
                                     </div>
-                                    
-                                    <div className="mt-4 flex space-x-2">
-                                        <button 
-                                            onClick={() => handleClick("APPROVE", user.id)}
-                                            className="flex-1 px-3 py-2 bg-yellow-400 hover:bg-yellow-500 text-black font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-300 transition-colors text-sm"
-                                        >
-                                            Approve
-                                        </button>
-                                        <button 
-                                            onClick={() => handleClick("REJECT", user.id)}
-                                            className="flex-1 px-3 py-2 bg-white hover:bg-gray-100 text-black border border-gray-300 font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-gray-300 transition-colors text-sm"
-                                        >
-                                            Reject
-                                        </button>
-                                    </div>
+                                </div>
+                                
+                                {/* Approval buttons */}
+                                <div className="px-4 pb-4 flex space-x-2">
+                                    <button 
+                                        onClick={() => handleClick("APPROVE", user.id)}
+                                        className="flex-1 px-3 py-2 bg-yellow-400 hover:bg-yellow-500 text-black font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-300 transition-colors text-sm"
+                                    >
+                                        Approve
+                                    </button>
+                                    <button 
+                                        onClick={() => handleClick("REJECT", user.id)}
+                                        className="flex-1 px-3 py-2 bg-white hover:bg-gray-100 text-black border border-gray-300 font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-gray-300 transition-colors text-sm"
+                                    >
+                                        Reject
+                                    </button>
                                 </div>
                             </div>
                         ))}
