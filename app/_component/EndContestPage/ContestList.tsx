@@ -52,6 +52,7 @@ export function ContestList() {
     async function handleClick(contestId: string) {
         const toastId = toast.loading("Ending...")
         try {
+            console.log(process.env.NEXT_PUBILC_BACKEND_URL)
             setContestId(contestId)
             const data = await axios.post(`${process.env.NEXT_PUBILC_BACKEND_URL}/admin/endcontest`, {
                 contestId
