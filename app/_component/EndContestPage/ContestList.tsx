@@ -47,7 +47,7 @@ export function ContestList() {
             setIsLoading(false)
             return
         }
-    }, [session.data])
+    }, [])
 
     async function handleClick(contestId: string) {
         const toastId = toast.loading("Ending...")

@@ -46,7 +46,7 @@ export function ContestList() {
             setIsLoading(false)
             return
         }
-    }, [session.data])
+    }, [])
 
     function handleClick(contestIds: string) {
         console.log("done")

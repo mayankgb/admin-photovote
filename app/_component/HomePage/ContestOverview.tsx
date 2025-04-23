@@ -51,10 +51,6 @@ export default function ContestOverview() {
 
     },[])
 
-    // if (DataTransfer) {
-      
-    // }
-
     return (
         <Card>
           <CardHeader className="pb-2">sds

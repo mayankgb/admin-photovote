@@ -63,7 +63,7 @@ export function ContestList() {
             toast.error("Failed to load contests")
             setIsLoading(false)
         }
-    }, [session.data])
+    }, [])
 
     async function handleStart(contestId: string) {
         const toastId = toast.loading("Starting contest...")
