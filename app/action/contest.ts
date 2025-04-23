@@ -80,7 +80,6 @@ export async function getParticipant(contestId: string) {
             const response = await prisma.participant.findMany({
                 where: {
                     contestId: contestId,
-                    status: "PENDING",
                    
                 },
                 select: {
