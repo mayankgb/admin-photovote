@@ -76,6 +76,37 @@ export async function getParticipant(contestId: string) {
             return
         }
 
+        if (session.user.role === "OWNER") {
+            const response = await prisma.participant.findMany({
+                where: {
+                    contestId: contestId,
+                    status: "PENDING",
+                   
+                },
+                select: {
+                    upvote: true,
+                    id: true,
+                    user: {
+                        select: {
+                            name: true, 
+                            image: true, 
+                            email: true, 
+                            branch: {
+                                select: {
+                                    name: true
+                                }
+                            }
+                        }
+                    }
+                }
+            })
+
+            if (response) {
+                return response
+            }
+            return
+        }
+
         const response = await prisma.participant.findMany({
             where: {
                 contestId: contestId,
